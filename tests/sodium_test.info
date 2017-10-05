@@ -1,0 +1,6 @@
+name = Sodium Test
+description = Module for testing the encrypt sodium module
+package = Testing
+core = 7.x
+version = VERSION
+hidden = TRUE
