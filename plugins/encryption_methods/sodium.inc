@@ -95,7 +95,7 @@ function _sodium_check_requirements() {
     $errors[] = t('Sodium module is not installed.');
   }
   elseif (!class_exists('\ParagonIE\Halite\Symmetric\Crypto')) {
-    $errors[] = t('Halite library not installed. Place the "Halite" directory in the libraries directory');
+    $errors[] = t('Halite library not installed. Check composer manager to verify the library is installed');
   }
 
   return $errors;
