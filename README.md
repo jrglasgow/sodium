@@ -1,12 +1,7 @@
 Drupal 7 Sodium -  README
 
-
 @TODO
-
-- Cleanup requirements and utilize composer manager to load the library
-
-1. Ensure the libsodium php extension is installed
-2. Place the "halite" library in the sites/all/libraries directory. In the future, this will be handled by composer manager.  It will be fixed shortly.
+1. Update test file
 
 ## Overview
 
@@ -65,6 +60,4 @@ Once everything is installed and operational, do the following:
    * Select "Sodium" for the encryption method
    * Select the name of the key definition you created in step 2
    * Click "Save"
-4. Test your encryption by selecting "Test" under "Operations" for the
-   encryption profile on the profiles listing page
-   (/admin/config/system/encryption/profiles)
+
