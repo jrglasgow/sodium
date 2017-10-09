@@ -5,5 +5,4 @@ core = 7.x
 dependencies[] = composer_manager
 dependencies[] = ctools
 dependencies[] = encrypt
-dependencies[] = key
 php = 5.6

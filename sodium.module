@@ -7,7 +7,7 @@
 
 /**
  * Implements hook_libraries_info().
- */
+ *//*
 function sodium_libraries_info() {
   return array(
     'halite' => array(
@@ -29,9 +29,12 @@ function sodium_libraries_info() {
  *   TRUE if the library could be loaded, FALSE otherwise.
  */
 function sodium_load_library() {
+  /*
   $library = libraries_load('halite');
   return !empty($library['loaded']);
+  */
 }
+
 
 /**
  * Implements hook_ctools_plugin_directory().
