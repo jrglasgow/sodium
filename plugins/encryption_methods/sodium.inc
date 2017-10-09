@@ -42,45 +42,41 @@ function _sodium_encryption_methods_sodium($op, $text, $key, $options = array())
     if (!$disable_base64) {
        $text = base64_decode($text);
     }
-    if (sodium_load_library()) {
+
     // Create the key object.
-      try {
-        $encryption_key = new EncryptionKey($key);
-        }
-        catch (InvalidKey $e) {
-          return FALSE;
-        }
-        try {
-          return Crypto::decrypt($text, $encryption_key);
-        }
-        catch (HaliteAlert $e) {
-          return FALSE;
-      }
-    }
-  }
-  else {
-    $processed_text = '';
-    if (sodium_load_library()) {
-    // Create the key object.
-      try {
-        $encryption_key = new EncryptionKey($key);
+    try {
+      $encryption_key = new EncryptionKey($key);
       }
       catch (InvalidKey $e) {
         return FALSE;
       }
-      // Encrypt.
       try {
-        $processed_text = Crypto::encrypt($text, $encryption_key);
+        return Crypto::decrypt($text, $encryption_key);
       }
       catch (HaliteAlert $e) {
         return FALSE;
-      }
-      // Check if we are disabling base64 encoding.
-      if (!$disable_base64) {
-        $processed_text = base64_encode($processed_text);
-      }
     }
-
+  }
+  else {
+    $processed_text = '';
+    // Create the key object.
+      try {
+      $encryption_key = new EncryptionKey($key);
+    }
+    catch (InvalidKey $e) {
+      return FALSE;
+    }
+    // Encrypt.
+    try {
+      $processed_text = Crypto::encrypt($text, $encryption_key);
+    }
+    catch (HaliteAlert $e) {
+      return FALSE;
+    }
+    // Check if we are disabling base64 encoding.
+    if (!$disable_base64) {
+      $processed_text = base64_encode($processed_text);
+    }
     return $processed_text;
   }
 }
@@ -91,7 +87,7 @@ function _sodium_encryption_methods_sodium($op, $text, $key, $options = array())
 function _sodium_check_requirements() {
   $errors = array();
 
-  if (!function_exists('sodium_load_library')) {
+  if (!function_exists('sodium_ctools_plugin_directory')) {
     $errors[] = t('Sodium module is not installed.');
   }
   elseif (!class_exists('\ParagonIE\Halite\Symmetric\Crypto')) {
